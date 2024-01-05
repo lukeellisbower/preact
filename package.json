@@ -1,9 +1,9 @@
 {
-  "name": "preact",
-  "amdName": "preact",
-  "version": "10.19.3",
+  "name": "preactcursor",
+  "amdName": "preactcursor",
+  "version": "10.18.4",
   "private": false,
-  "description": "Fast 3kb React-compatible Virtual DOM library.",
+  "description": "Preact fork that maintains text input cursor positions when using global stores for input state.",
   "main": "dist/preact.js",
   "module": "dist/preact.module.js",
   "umd:main": "dist/preact.umd.js",
@@ -250,7 +250,7 @@
     "framework"
   ],
   "authors": [
-    "The Preact Authors (https://github.com/preactjs/preact/contributors)"
+    "lukeellisbower"
   ],
   "repository": "preactjs/preact",
   "bugs": "https://github.com/preactjs/preact/issues",
@@ -299,7 +299,7 @@
     "microbundle": "^0.15.1",
     "mocha": "^8.2.1",
     "npm-merge-driver-install": "^1.1.1",
-    "npm-run-all": "^4.0.0",
+    "npm-run-all": "^4.1.5",
     "preact-render-to-string": "^5.2.5",
     "prettier": "^2.8.6",
     "prop-types": "^15.7.2",
