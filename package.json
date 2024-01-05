@@ -1,7 +1,7 @@
 {
-  "name": "preactcursor",
-  "amdName": "preactcursor",
-  "version": "10.18.4",
+  "name": "preact",
+  "amdName": "preact",
+  "version": "10.18.3",
   "private": false,
   "description": "Preact fork that maintains text input cursor positions when using global stores for input state.",
   "main": "dist/preact.js",
