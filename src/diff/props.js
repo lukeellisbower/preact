@@ -24,7 +24,19 @@ function setStyle(style, key, value) {
 export function setProperty(dom, name, value, oldValue, isSvg) {
 	let useCapture;
 
-	o: if (name === 'style') {
+	o: if (name === 'value' && dom.type === "text") { // special case for text inputs to maintain cursor position even if set value is different from the current value
+		// Save the current cursor position
+        var startPos = dom.selectionStart;
+        var endPos = dom.selectionEnd;
+
+        // Update the value
+        if (dom[name] !== value) {
+            dom.setAttribute(name, value);
+            // Restore cursor position
+            dom.setSelectionRange(startPos, endPos);
+        }
+	}
+	else if (name === 'style') {
 		if (typeof value == 'string') {
 			dom.style.cssText = value;
 		} else {
