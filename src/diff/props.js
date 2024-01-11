@@ -28,23 +28,20 @@ export function setProperty(dom, name, value, oldValue, isSvg) {
 		name === 'value' &&
 		(dom.tagName === 'INPUT' || dom.tagName === 'TEXTAREA')
 	) {
-		// special case for text inputs to maintain cursor position even if set value is different from the current value
-
 		try {
-			// Save the current cursor position
-			var startPos = dom.selectionStart;
-			var endPos = dom.selectionEnd;
-
-			// Update the value
 			if (dom[name] !== value) {
-				dom.setAttribute(name, value);
+				// Save the current cursor position
+				var startPos = dom.selectionStart;
+				var endPos = dom.selectionEnd;
+
+				dom[name] = value; // must use direct prop set instead of using setAttribute as setAttribute can cause the cursor to still jump to the end if 2 keys are pressed super quickly one after the other. Maybe because its slower? It gives the dom a chance to get out of sync with the vdom updates because the state updates and gets are all async so the native dom updates aren't blocked while the vdom catches up
+				// dom.setAttribute(name, value);
+
 				// Restore cursor position
 				dom.setSelectionRange(startPos, endPos);
 			}
 		} catch (e) {
-			if (dom[name] !== value) {
-				dom.setAttribute(name, value);
-			}
+			dom[name] = value;
 		}
 	} else if (name === 'style') {
 		if (typeof value == 'string') {
